@@ -59,16 +59,10 @@ return packer.startup(function(use)
     use({ "goolord/alpha-nvim" })
     use({ "folke/which-key.nvim" })
 
-    -- syntax
+    -- motion, text manipulation
+    use({ "phaazon/hop.nvim" })
     use({ "junegunn/vim-easy-align" })
-    use({
-        "kylechui/nvim-surround",
-        config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-            })
-        end
-    })
+    use({ "kylechui/nvim-surround" })
 
     -- Colorschemes
     use({ "lunarvim/darkplus.nvim" })
