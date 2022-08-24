@@ -88,7 +88,8 @@ return packer.startup(function(use)
 
     -- Telescope
     use({ "nvim-telescope/telescope.nvim" })
-
+    use({ "tom-anders/telescope-vim-bookmarks.nvim" })
+  
     -- Treesitter
     use({ "nvim-treesitter/nvim-treesitter", })
 
@@ -96,9 +97,16 @@ return packer.startup(function(use)
     use({ "lewis6991/gitsigns.nvim" })
 
     -- debugging (nvim-dap)
-    use ({ "mfussenegger/nvim-dap" }) 
-    -- dap adapters
-    use ({ "mfussenegger/nvim-jdtls" })
+    use({ "mfussenegger/nvim-dap" }) 
+    use({ "mfussenegger/nvim-jdtls" })
+    use({ "rcarriga/nvim-dap-ui" })
+    use({ "ravenxrz/DAPInstall.nvim" })
+
+    -- gui
+    use({ "rcarriga/nvim-notify" })
+
+    -- bookmarking
+    use({ "MattesGroeger/vim-bookmarks" })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
