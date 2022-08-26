@@ -15,6 +15,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	vim.cmd([[packadd packer.nvim]])
 end
 
+--TODO prefer to put this whichkey or custom user function
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd([[
   augroup packer_user_config
@@ -40,28 +41,41 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-	-- My plugins here
-
+	-- Plugin manager
 	use({ "wbthomason/packer.nvim" }) -- Have packer manage itself
+
+	-- Lua development
 	use({ "nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
-	use({ "windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
-	use({ "numToStr/Comment.nvim" })
-	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
+	use({ "nvim-lua/popup.nvim" })
+	use({ "christianchiarulli/lua-dev.nvim" })
+
+	-- system improvement
+	use({ "lewis6991/impatient.nvim" })
+
+	-- GUI
 	use({ "kyazdani42/nvim-web-devicons" })
 	use({ "kyazdani42/nvim-tree.lua" })
 	use({ "akinsho/bufferline.nvim" })
-	use({ "moll/vim-bbye" })
 	use({ "nvim-lualine/lualine.nvim" })
 	use({ "akinsho/toggleterm.nvim" })
 	use({ "ahmedkhalf/project.nvim" })
-	use({ "lewis6991/impatient.nvim" })
-	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "goolord/alpha-nvim" })
 	use({ "folke/which-key.nvim" })
+	use({ "rcarriga/nvim-notify" })
+
+	-- general utility
+	use({ "moll/vim-bbye" }) -- improve BDelete
+	use({ "MattesGroeger/vim-bookmarks" })
+	use({ "nvim-telescope/telescope.nvim" }) -- fuzzy finder
+	use({ "tom-anders/telescope-vim-bookmarks.nvim" })
 
 	-- motion, text manipulation
-	use({ "phaazon/hop.nvim" })
-	use({ "junegunn/vim-easy-align" })
+	use({ "lukas-reineke/indent-blankline.nvim" })
+	use({ "numToStr/Comment.nvim" })
+	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
+	use({ "windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
+	use({ "phaazon/hop.nvim" }) -- move around buffer
+	use({ "junegunn/vim-easy-align" }) -- Aligning text on symbol or expression
 	use({ "kylechui/nvim-surround" })
 	use({ "nacro90/numb.nvim" })
 	use({ "monaqa/dial.nvim" })
@@ -70,6 +84,13 @@ return packer.startup(function(use)
 	use({ "lunarvim/darkplus.nvim" })
 	use({ "bluz71/vim-moonfly-colors" })
 
+	----------------------
+	-- Code development --
+	----------------------
+	-- SCM
+	use({ "lewis6991/gitsigns.nvim" }) -- Git
+
+	-- CODE COMPLETIONS/GUIDE
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
 	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
@@ -84,30 +105,22 @@ return packer.startup(function(use)
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig" }) -- enable LSP
-	use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
+	use({ "b0o/SchemaStore.nvim" })
+	--FIXME can't download from git source hut
+	--[[ use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" }) ]]
 
-	-- Telescope
-	use({ "nvim-telescope/telescope.nvim" })
-	use({ "tom-anders/telescope-vim-bookmarks.nvim" })
+	-- highlighting
+	use({ "nvim-treesitter/nvim-treesitter" }) -- also for general AST processing
 
-	-- Treesitter
-	use({ "nvim-treesitter/nvim-treesitter" })
-
-	-- Git
-	use({ "lewis6991/gitsigns.nvim" })
-
-	-- debugging (nvim-dap)
+	-- DEBUGGING
+	-- nvim-dap
 	use({ "mfussenegger/nvim-dap" })
 	use({ "mfussenegger/nvim-jdtls" })
 	use({ "rcarriga/nvim-dap-ui" })
 	use({ "ravenxrz/DAPInstall.nvim" })
-
-	-- gui
-	use({ "rcarriga/nvim-notify" })
-
-	-- bookmarking
-	use({ "MattesGroeger/vim-bookmarks" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
