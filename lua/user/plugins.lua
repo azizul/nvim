@@ -31,13 +31,17 @@ if not status_ok then
 end
 
 -- Have packer use a popup window
-packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-})
+packer.init {
+  -- snapshot = "july-24",
+  snapshot_path = fn.stdpath "config" .. "/snapshots",
+  max_jobs = 50,
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+    prompt_border = "rounded", -- Border style of prompt popups.
+  },
+}
 
 -- Install your plugins here
 return packer.startup(function(use)
@@ -84,6 +88,8 @@ return packer.startup(function(use)
 	use({ "lunarvim/darkplus.nvim" })
 	use({ "bluz71/vim-moonfly-colors" })
 
+	-- Note taking
+	use({ "nvim-neorg/neorg", requires = "nvim-lua/plenary.nvim", })
 	----------------------
 	-- Code development --
 	----------------------
@@ -110,7 +116,7 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 	use({ "b0o/SchemaStore.nvim" })
 	--FIXME can't download from git source hut
-	--[[ use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" }) ]]
+	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" })
 
 	-- highlighting
 	use({ "nvim-treesitter/nvim-treesitter" }) -- also for general AST processing
