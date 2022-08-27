@@ -26,23 +26,23 @@ if vim.fn.has("mac") == 1 then
 	WORKSPACE_PATH      = home .. "/workspace/"
 	CONFIG              = "mac"
     CONFIG_PATH         = home .. "./config/nvim/"
-    LOMBOK_JAR_PATH     = home .. "/.local/share/nvim/lsp_servers/jdtls/lombok.jar"
-    JDTLS_JAR_GLOB_PATH = home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
-    JDT_CONFIG          = home .. "/.local/share/nvim/lsp_servers/jdtls/config_" .. CONFIG
+    LOMBOK_JAR_PATH     = home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar"
+    JDTLS_JAR_GLOB_PATH = home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
+    JDT_CONFIG          = home .. "/.local/share/nvim/mason/packages/jdtls/config_" .. CONFIG
 elseif vim.fn.has("unix") == 1 then
 	WORKSPACE_PATH      = home .. "/workspace/"
 	CONFIG              = "linux"
     CONFIG_PATH         = home .. "./config/nvim/"
-    LOMBOK_JAR_PATH     = home .. "/.local/share/nvim/lsp_servers/jdtls/lombok.jar"
-    JDTLS_JAR_GLOB_PATH = home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
-    JDT_CONFIG          = home .. "/.local/share/nvim/lsp_servers/jdtls/config_" .. CONFIG
+    LOMBOK_JAR_PATH     = home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar"
+    JDTLS_JAR_GLOB_PATH = home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
+    JDT_CONFIG          = home .. "/.local/share/nvim/mason/packages/jdtls/config_" .. CONFIG
 elseif vim.fn.has("windows") == 1 then
 	WORKSPACE_PATH      = home .. "/workspace/"
 	CONFIG              = "win"
     CONFIG_PATH         = home .. "/AppData/Local/nvim/"
-    LOMBOK_JAR_PATH     = home .. "/AppData/Local/nvim-data/lsp_servers/jdtls/lombok.jar"
-    JDTLS_JAR_GLOB_PATH = home .. "/AppData/Local/nvim-data/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
-    JDT_CONFIG          = home .. "/AppData/Local/nvim-data/lsp_servers/jdtls/config_" .. CONFIG
+    LOMBOK_JAR_PATH     = home .. "/AppData/Local/nvim-data/mason/packages/jdtls/lombok.jar"
+    JDTLS_JAR_GLOB_PATH = home .. "/AppData/Local/nvim-data/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
+    JDT_CONFIG          = home .. "/AppData/Local/nvim-data/mason/packages/jdtls/config_" .. CONFIG
 else
 	print("Unsupported system")
 end
