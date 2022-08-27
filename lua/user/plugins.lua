@@ -2,6 +2,7 @@ local fn = vim.fn
 
 -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+---@diagnostic disable-next-line: missing-parameter
 if fn.empty(fn.glob(install_path)) > 0 then
 	PACKER_BOOTSTRAP = fn.system({
 		"git",
@@ -31,17 +32,17 @@ if not status_ok then
 end
 
 -- Have packer use a popup window
-packer.init {
-  -- snapshot = "july-24",
-  snapshot_path = fn.stdpath "config" .. "/snapshots",
-  max_jobs = 50,
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-    prompt_border = "rounded", -- Border style of prompt popups.
-  },
-}
+packer.init({
+	snapshot_path = fn.stdpath("config") .. "/snapshots",
+	max_jobs = 5,
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "rounded" })
+		end,
+		prompt_border = "rounded", -- Border style of prompt popups.
+	},
+	log = { level = "warn" }, -- The default print log level. One of: "trace", "debug", "info", "warn", "error", "fatal".
+})
 
 -- Install your plugins here
 return packer.startup(function(use)
@@ -72,6 +73,7 @@ return packer.startup(function(use)
 	use({ "MattesGroeger/vim-bookmarks" })
 	use({ "nvim-telescope/telescope.nvim" }) -- fuzzy finder
 	use({ "tom-anders/telescope-vim-bookmarks.nvim" })
+	use({ "max397574/better-escape.nvim" }) -- faster mapping for escape
 
 	-- motion, text manipulation
 	use({ "lukas-reineke/indent-blankline.nvim" })
@@ -81,15 +83,15 @@ return packer.startup(function(use)
 	use({ "phaazon/hop.nvim" }) -- move around buffer
 	use({ "junegunn/vim-easy-align" }) -- Aligning text on symbol or expression
 	use({ "kylechui/nvim-surround" })
-	use({ "nacro90/numb.nvim" })
-	use({ "monaqa/dial.nvim" })
+	use({ "nacro90/numb.nvim" }) -- peeking via :xx command
+	use({ "monaqa/dial.nvim" }) -- increment & decrement
 
 	-- Colorschemes
 	use({ "lunarvim/darkplus.nvim" })
 	use({ "bluz71/vim-moonfly-colors" })
 
 	-- Note taking
-	use({ "nvim-neorg/neorg", requires = "nvim-lua/plenary.nvim", })
+	use({ "nvim-neorg/neorg", requires = "nvim-lua/plenary.nvim" })
 	----------------------
 	-- Code development --
 	----------------------
@@ -115,8 +117,7 @@ return packer.startup(function(use)
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 	use({ "b0o/SchemaStore.nvim" })
-	--FIXME can't download from git source hut
-	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" })
+	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", as = "lsp_lines" })
 
 	-- highlighting
 	use({ "nvim-treesitter/nvim-treesitter" }) -- also for general AST processing

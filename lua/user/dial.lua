@@ -1,4 +1,3 @@
-
 local status_ok, dial_config = pcall(require, "dial.config")
 if not status_ok then
   return
