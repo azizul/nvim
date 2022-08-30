@@ -25,14 +25,14 @@ local JDT_CONFIG
 if vim.fn.has("mac") == 1 then
 	WORKSPACE_PATH      = home .. "/workspace/"
 	CONFIG              = "mac"
-    CONFIG_PATH         = home .. "./local/share/nvim/"
+    CONFIG_PATH         = home .. "/.local/share/nvim/"
     LOMBOK_JAR_PATH     = home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar"
     JDTLS_JAR_GLOB_PATH = home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
     JDT_CONFIG          = home .. "/.local/share/nvim/mason/packages/jdtls/config_" .. CONFIG
 elseif vim.fn.has("unix") == 1 then
 	WORKSPACE_PATH      = home .. "/workspace/"
 	CONFIG              = "linux"
-    CONFIG_PATH         = home .. "./config/share/nvim/"
+    CONFIG_PATH         = home .. "/.local/share/nvim/"
     LOMBOK_JAR_PATH     = home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar"
     JDTLS_JAR_GLOB_PATH = home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
     JDT_CONFIG          = home .. "/.local/share/nvim/mason/packages/jdtls/config_" .. CONFIG
