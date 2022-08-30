@@ -125,9 +125,10 @@ return packer.startup(function(use)
 	-- DEBUGGING
 	-- nvim-dap
 	use({ "mfussenegger/nvim-dap" })
-	use({ "mfussenegger/nvim-jdtls" })
 	use({ "rcarriga/nvim-dap-ui" })
 	use({ "ravenxrz/DAPInstall.nvim" })
+	use({ "mfussenegger/nvim-jdtls" }) -- java lsp and debugger
+	use({ "jbyuki/one-small-step-for-vimkind" }) -- java lsp and debugger
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
