@@ -96,7 +96,8 @@ local nmappings_m = {
   k = { "<cmd>silent BookmarkPrev<cr>", "Prev" },
   S = { "<cmd>silent BookmarkShowAll<cr>", "Show All" },
   x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
-  h = { "<cmd>HopChar2<cr>", "Hop" }
+  h = { "<cmd>HopChar2<cr>", "Hop" },
+  l = { "<cmd>source %<cr>", "Source current file" },
 }
 
 local nmappings_leader = {
