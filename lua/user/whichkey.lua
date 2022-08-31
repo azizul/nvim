@@ -82,7 +82,7 @@ local nmappings_leader = {
     ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
     ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     ["w"] = { "<cmd>w!<CR>", "Save" },
-    ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
+    ["Q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
     ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 
     b = {
