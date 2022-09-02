@@ -197,6 +197,7 @@ local nmappings_leader = {
         c = { "<cmd>nohlsearch<CR>", "Clear Highlight" },
         h = { "<cmd>HopChar2<cr>", "Hop 2 character" },
         l = { "<cmd>source %<cr>", "Source current file" },
+        t = { "<cmd>TSPlaygroundToggle<cr>", "TreeSitter Playground" },
     },
 }
 

@@ -121,6 +121,7 @@ return packer.startup(function(use)
 
 	-- highlighting
 	use({ "nvim-treesitter/nvim-treesitter" }) -- also for general AST processing
+	use({ "nvim-treesitter/playground" }) -- useful to understand lang grammar
 
 	-- DEBUGGING
 	-- nvim-dap
