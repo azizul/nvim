@@ -120,8 +120,11 @@ return packer.startup(function(use)
 	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", as = "lsp_lines" })
 
 	-- highlighting
-	use({ "nvim-treesitter/nvim-treesitter" }) -- also for general AST processing
-	use({ "nvim-treesitter/playground" }) -- useful to understand lang grammar
+	use({ "nvim-treesitter/nvim-treesitter", requires = {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        "p00f/nvim-ts-rainbow",
+		"nvim-treesitter/playground",
+	} })
 
 	-- DEBUGGING
 	-- nvim-dap
