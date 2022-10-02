@@ -57,6 +57,16 @@ return packer.startup(function(use)
 	-- system improvement
 	use({ "lewis6991/impatient.nvim" })
 
+	-- highlighting
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		requires = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"p00f/nvim-ts-rainbow",
+			"nvim-treesitter/playground",
+		},
+	})
+
 	-- GUI
 	use({ "kyazdani42/nvim-web-devicons" })
 	use({ "kyazdani42/nvim-tree.lua" })
@@ -91,7 +101,20 @@ return packer.startup(function(use)
 	use({ "bluz71/vim-moonfly-colors" })
 
 	-- Note taking
-	use({ "nvim-neorg/neorg", requires = "nvim-lua/plenary.nvim" })
+	-- TODO still need to figure out how to search
+    -- FIXME break with 0.8
+	--[[ use({ ]]
+	--[[ 	"phaazon/mind.nvim", ]]
+	--[[ 	branch = "v2.2", ]]
+	--[[ 	requires = { "nvim-lua/plenary.nvim" }, ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("mind").setup() ]]
+	--[[ 	end, ]]
+	--[[ }) ]]
+
+    -- Orgmode port
+	use({ "nvim-orgmode/orgmode" })
+
 	----------------------
 	-- Code development --
 	----------------------
@@ -118,13 +141,6 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 	use({ "b0o/SchemaStore.nvim" })
 	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", as = "lsp_lines" })
-
-	-- highlighting
-	use({ "nvim-treesitter/nvim-treesitter", requires = {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        "p00f/nvim-ts-rainbow",
-		"nvim-treesitter/playground",
-	} })
 
 	-- DEBUGGING
 	-- nvim-dap
