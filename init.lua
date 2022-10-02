@@ -26,5 +26,5 @@ require "user.bookmark"
 require "user.numb"
 require "user.notify"
 require "user.functions"
---[[ require "user.neorg" ]]
 require "user.escape"
+require "user.orgmode"
