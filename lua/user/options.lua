@@ -11,7 +11,7 @@ local options = {
     mouse = "a", -- allow the mouse to be used in neovim
     pumheight = 10, -- pop up menu height
     showmode = false, -- we don't need to see things like -- INSERT -- anymore
-    showtabline = 2, -- always show tabs
+    showtabline = 1, -- show tabline if theres more than 1 tab
     smartcase = true, -- smart case
     smartindent = true, -- make indenting smarter again
     splitbelow = true, -- force all horizontal splits to go below current window
@@ -50,7 +50,7 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
-vim.o.winbar = "%{%v:lua.require('user.utility.nvim').eval()%}"
+vim.o.winbar = "%{%v:lua.require('user.utility.nvim').winbar_config()%}"
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
