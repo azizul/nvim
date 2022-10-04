@@ -70,28 +70,12 @@ return packer.startup(function(use)
 	-- GUI
 	use({ "kyazdani42/nvim-web-devicons" })
 	use({ "kyazdani42/nvim-tree.lua" })
-	use({ "akinsho/bufferline.nvim" })
 	use({ "nvim-lualine/lualine.nvim" })
 	use({ "akinsho/toggleterm.nvim" })
 	use({ "ahmedkhalf/project.nvim" })
 	use({ "goolord/alpha-nvim" })
 	use({ "folke/which-key.nvim" })
 	use({ "rcarriga/nvim-notify" })
-    -- better commandline
-    -- FIXME unstable
-	--[[ use({ ]]
-	--[[ 	"folke/noice.nvim", ]]
-	--[[ 	event = "VimEnter", ]]
-	--[[ 	config = function() ]]
-	--[[ 		require("noice").setup() ]]
-	--[[ 	end, ]]
-	--[[ 	requires = { ]]
-	--[[ 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries ]]
-	--[[ 		"MunifTanjim/nui.nvim", ]]
-	--[[ 		"rcarriga/nvim-notify", ]]
-	--[[ 		"hrsh7th/nvim-cmp", ]]
-	--[[ 	}, ]]
-	--[[ }) ]]
 
 	-- general utility
 	use({ "moll/vim-bbye" }) -- improve BDelete
