@@ -114,6 +114,14 @@ return packer.startup(function(use)
 	-- Orgmode port
 	use({ "nvim-orgmode/orgmode" })
 
+	-- color picker
+	use({
+		"ziontee113/color-picker.nvim",
+		config = function()
+			require("color-picker")
+		end,
+	})
+
 	----------------------
 	-- Code development --
 	----------------------
