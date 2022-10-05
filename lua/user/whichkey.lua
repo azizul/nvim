@@ -123,7 +123,7 @@ local nmappings_leader = {
         name = "LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
         c = { "<cmd>lua require('user.lsp').server_capabilities()<cr>", "Get Capabilities" },
-        f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+        f = { "<cmd>lua vim.lsp.buf.format { async = true} <cr>", "Format" },
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
         i = { "<cmd>LspInfo<cr>", "Info" },
         I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
