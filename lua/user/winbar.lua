@@ -1,4 +1,5 @@
 local M = {}
+local Color = require "user.utility.constant".Color
 
 M.winbar_filetype_exclude = {
 	"help",
@@ -48,7 +49,7 @@ M.get_filename = function()
 			file_icon_color = ""
 		end
 
-		vim.api.nvim_set_hl(0, "Winbar", { fg = Constant.Color.BLUE_MOONFLY })
+		vim.api.nvim_set_hl(0, "Winbar", { fg = Color.blue_moonfly })
 
 		return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#Winbar#" .. filename .. "%*"
 	end
