@@ -76,7 +76,7 @@ return packer.startup(function(use)
 	use({ "goolord/alpha-nvim" })
 	use({ "folke/which-key.nvim" })
 	use({ "rcarriga/nvim-notify" })
-    use({ "SmiteshP/nvim-navic" })
+	use({ "SmiteshP/nvim-navic" })
 
 	-- general utility
 	use({ "moll/vim-bbye" }) -- improve BDelete
@@ -150,6 +150,7 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 	use({ "b0o/SchemaStore.nvim" })
 	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", as = "lsp_lines" })
+    use({ "simrat39/symbols-outline.nvim" })
 
 	-- DEBUGGING
 	-- nvim-dap
