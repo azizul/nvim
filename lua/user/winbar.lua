@@ -48,10 +48,7 @@ M.get_filename = function()
 			file_icon_color = ""
 		end
 
-        -- FIXME can't find the NavicText
-		--[[ local navic_text = vim.api.nvim_get_hl_by_name("NavicText", true) ]]
-		--[[ vim.api.nvim_set_hl(0, "Winbar", { fg = navic_text.foreground }) ]]
-        vim.api.nvim_set_hl(0, "Winbar", { fg = '#80a0ff' })
+		vim.api.nvim_set_hl(0, "Winbar", { fg = Constant.Color.BLUE_MOONFLY })
 
 		return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#Winbar#" .. filename .. "%*"
 	end
@@ -127,20 +124,15 @@ end
 
 M.create_winbar = function()
 	vim.api.nvim_create_augroup("_winbar", {})
-	if vim.fn.has("nvim-0.8") == 1 then
-		vim.api.nvim_create_autocmd(
-			{ "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
-			{
-				group = "_winbar",
-				callback = function()
-					local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
-					if not status_ok then
-						require("user.winbar").get_winbar()
-					end
-				end,
-			}
-		)
-	end
+	vim.api.nvim_create_autocmd(
+		{ "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
+		{
+			group = "_winbar",
+			callback = function()
+				require("user.winbar").get_winbar()
+			end,
+		}
+	)
 end
 
 M.create_winbar()
