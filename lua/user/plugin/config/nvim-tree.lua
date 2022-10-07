@@ -66,14 +66,14 @@ nvim_tree.setup({
 		},
 		float = {
 			enable = true,
-            open_win_config = {
-                relative = "editor",
-                border = "rounded",
-                width = 60,
-                height = 60,
-                row = 3,
-                col = 3
-            }
+			open_win_config = {
+				relative = "editor",
+				border = "rounded",
+				width = 60,
+				height = 60,
+				row = 3,
+				col = 3,
+			},
 		},
 	},
 })

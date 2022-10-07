@@ -50,7 +50,7 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
-vim.o.winbar = "%{%v:lua.require('user.utility.nvim').winbar_config()%}"
+--[[ vim.o.winbar = "%{%v:lua.require('user.utility.nvim').winbar_config()%}" ]]
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])

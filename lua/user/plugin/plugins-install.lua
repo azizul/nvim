@@ -21,7 +21,7 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost plugins-install.lua source <afile> | PackerSync
   augroup end
 ]])
 
@@ -76,6 +76,7 @@ return packer.startup(function(use)
 	use({ "goolord/alpha-nvim" })
 	use({ "folke/which-key.nvim" })
 	use({ "rcarriga/nvim-notify" })
+    use({ "SmiteshP/nvim-navic" })
 
 	-- general utility
 	use({ "moll/vim-bbye" }) -- improve BDelete
@@ -114,13 +115,14 @@ return packer.startup(function(use)
 	-- Orgmode port
 	use({ "nvim-orgmode/orgmode" })
 
-	-- color picker
+	-- Color
 	use({
 		"ziontee113/color-picker.nvim",
 		config = function()
 			require("color-picker")
 		end,
 	})
+	use("NvChad/nvim-colorizer.lua") -- add color bg to certain keyword
 
 	----------------------
 	-- Code development --
