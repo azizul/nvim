@@ -129,7 +129,10 @@ local nmappings_leader = {
         I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
         v = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Virtual Text" },
         l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-        q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+        --[[ q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" }, ]]
+        d = { "<cmd>Trouble document_diagnostics<cr>", "Document diagnostic" },
+        w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostic" },
+        q = { "<cmd>Trouble quickfix<cr>", "Quickfix" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         o = { "<cmd>SymbolsOutline<cr>", "Outline" },
     },
