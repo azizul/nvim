@@ -16,15 +16,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	vim.cmd([[packadd packer.nvim]])
 end
 
---TODO prefer to put this whichkey or custom user function
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins-install.lua source <afile> | PackerSync
-  augroup end
-]])
-
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
@@ -54,8 +45,9 @@ return packer.startup(function(use)
 	use({ "nvim-lua/popup.nvim" })
 	use({ "christianchiarulli/lua-dev.nvim" })
 
+    -- FIXME still in pull request not merged yet to neovim
 	-- system improvement
-	use({ "lewis6991/impatient.nvim" })
+	use({ "lewis6991/impatient.nvim"})
 
 	-- highlighting
 	use({
@@ -65,39 +57,40 @@ return packer.startup(function(use)
 			"p00f/nvim-ts-rainbow",
 			"nvim-treesitter/playground",
 		},
+        config = require("user.plugin.config.treesitter")
 	})
 
 	-- GUI
 	use({ "kyazdani42/nvim-web-devicons" })
-	use({ "kyazdani42/nvim-tree.lua" })
-	use({ "nvim-lualine/lualine.nvim" })
-	use({ "akinsho/toggleterm.nvim" })
-	use({ "ahmedkhalf/project.nvim" })
-	use({ "goolord/alpha-nvim" })
-	use({ "folke/which-key.nvim" })
-	use({ "rcarriga/nvim-notify" })
+	use({ "kyazdani42/nvim-tree.lua", config = require("user.plugin.config.nvim-tree") })
+	use({ "nvim-lualine/lualine.nvim", config = require("user.plugin.config.lualine") })
+	use({ "akinsho/toggleterm.nvim", config = require("user.plugin.config.toggleterm") })
+	use({ "ahmedkhalf/project.nvim", config = require("user.plugin.config.project") })
+	use({ "goolord/alpha-nvim", config = require("user.plugin.config.alpha") })
+	use({ "folke/which-key.nvim", config = require("user.plugin.config.whichkey") })
+	use({ "rcarriga/nvim-notify", config = require("user.plugin.config.notify") })
 
 	-- general utility
 	use({ "moll/vim-bbye" }) -- improve BDelete
 	use({ "MattesGroeger/vim-bookmarks" })
-	use({ "nvim-telescope/telescope.nvim" }) -- fuzzy finder
+	use({ "nvim-telescope/telescope.nvim", config = require("user.plugin.config.telescope") }) -- fuzzy finder
 	use({ "tom-anders/telescope-vim-bookmarks.nvim" })
-	use({ "max397574/better-escape.nvim" }) -- faster mapping for escape
+	use({ "max397574/better-escape.nvim", config = require("user.plugin.config.escape") }) -- faster mapping for escape
 
 	-- motion, text manipulation
-	use({ "lukas-reineke/indent-blankline.nvim" })
-	use({ "numToStr/Comment.nvim" })
+	use({ "lukas-reineke/indent-blankline.nvim", config = require("user.plugin.config.indentline") })
+	use({ "numToStr/Comment.nvim", config = require("user.plugin.config.comment") })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-	use({ "windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
-	use({ "phaazon/hop.nvim" }) -- move around buffer
+	use({ "windwp/nvim-autopairs", config = require("user.plugin.config.autopairs") }) -- Autopairs, integrates with both cmp and treesitter
+	use({ "phaazon/hop.nvim", config = require("user.plugin.config.hop") }) -- move around buffer
 	use({ "junegunn/vim-easy-align" }) -- Aligning text on symbol or expression
-	use({ "kylechui/nvim-surround" })
-	use({ "nacro90/numb.nvim" }) -- peeking via :xx command
+	use({ "kylechui/nvim-surround", config = require("user.plugin.config.surround") })
+	use({ "nacro90/numb.nvim", config = require("user.plugin.config.numb") }) -- peeking via :xx command
 	use({ "monaqa/dial.nvim" }) -- increment & decrement
 
 	-- Colorschemes
-	use({ "lunarvim/darkplus.nvim" })
-	use({ "bluz71/vim-moonfly-colors" })
+	use({ "bluz71/vim-moonfly-colors", config = require("user.plugin.config.colorscheme") }) -- active and loaded
+	use({ "lunarvim/darkplus.nvim" }) -- not active
 
 	-- Note taking
 	-- TODO still need to figure out how to search
@@ -112,26 +105,27 @@ return packer.startup(function(use)
 	--[[ }) ]]
 
 	-- Orgmode port
-	use({ "nvim-orgmode/orgmode" })
+	use({ "nvim-orgmode/orgmode", config = require("user.plugin.config.orgmode") })
 
 	-- Color
-	use({
-		"ziontee113/color-picker.nvim",
-		config = function()
-			require("color-picker")
-		end,
-	})
-	use("NvChad/nvim-colorizer.lua") -- add color bg to certain keyword
+	--[[ use({ ]]
+	--[[ 	"ziontee113/color-picker.nvim", ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("color-picker") ]]
+	--[[ 	end, ]]
+	--[[ }) ]]
+	use({ "ziontee113/color-picker.nvim", config = require("user.plugin.config.colorpicker") })
+    use({ "NvChad/nvim-colorizer.lua", config = require("user.plugin.config.colorizer") }) -- add color bg to certain keyword
 
 	----------------------
 	-- Code development --
 	----------------------
 	-- SCM
-	use({ "lewis6991/gitsigns.nvim" }) -- Git
+	use({ "lewis6991/gitsigns.nvim", config = require("user.plugin.config.gitsigns") }) -- Git
 
 	-- CODE COMPLETIONS/GUIDE
 	-- cmp plugins
-	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
+	use({ "hrsh7th/nvim-cmp", config = require("user.plugin.config.cmp") }) -- The completion plugin
 	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
 	use({ "hrsh7th/cmp-path" }) -- path completions
 	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
@@ -149,13 +143,13 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 	use({ "b0o/SchemaStore.nvim" })
 	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", as = "lsp_lines" })
-	use({ "simrat39/symbols-outline.nvim" })
-	use({ "SmiteshP/nvim-navic" })
-	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", })
+	use({ "simrat39/symbols-outline.nvim", config = require("user.plugin.config.symbol-outline") })
+	use({ "SmiteshP/nvim-navic", config = require("user.plugin.config.navic") })
+	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", config = require("user.plugin.config.trouble") })
 
 	-- DEBUGGING
 	-- nvim-dap
-	use({ "mfussenegger/nvim-dap" })
+	use({ "mfussenegger/nvim-dap", config = require("user.plugin.config.dap") })
 	use({ "rcarriga/nvim-dap-ui" })
 	use({ "ravenxrz/DAPInstall.nvim" })
 	use({ "mfussenegger/nvim-jdtls" }) -- java lsp and debugger

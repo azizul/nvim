@@ -41,5 +41,5 @@ end
 lsp_lines.setup()
 
 -- debugging
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("INFO")
 return M
