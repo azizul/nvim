@@ -45,9 +45,9 @@ return packer.startup(function(use)
 	use({ "nvim-lua/popup.nvim" })
 	use({ "christianchiarulli/lua-dev.nvim" })
 
-    -- FIXME still in pull request not merged yet to neovim
+	-- FIXME still in pull request not merged yet to neovim
 	-- system improvement
-	use({ "lewis6991/impatient.nvim"})
+	use({ "lewis6991/impatient.nvim" })
 
 	-- highlighting
 	use({
@@ -57,7 +57,7 @@ return packer.startup(function(use)
 			"p00f/nvim-ts-rainbow",
 			"nvim-treesitter/playground",
 		},
-        config = require("user.plugin.config.treesitter")
+		config = require("user.plugin.config.treesitter"),
 	})
 
 	-- GUI
@@ -70,6 +70,17 @@ return packer.startup(function(use)
 	use({ "folke/which-key.nvim", config = require("user.plugin.config.whichkey") })
 	use({ "rcarriga/nvim-notify", config = require("user.plugin.config.notify") })
 
+    --FIXME need to manually call require "noice".setup() to start it
+	use({
+		"folke/noice.nvim",
+		event = "VimEnter",
+		config = require("user.plugin.config.noice"),
+		requires = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	})
 	-- general utility
 	use({ "moll/vim-bbye" }) -- improve BDelete
 	use({ "MattesGroeger/vim-bookmarks" })
@@ -115,7 +126,7 @@ return packer.startup(function(use)
 	--[[ 	end, ]]
 	--[[ }) ]]
 	use({ "ziontee113/color-picker.nvim", config = require("user.plugin.config.colorpicker") })
-    use({ "NvChad/nvim-colorizer.lua", config = require("user.plugin.config.colorizer") }) -- add color bg to certain keyword
+	use({ "NvChad/nvim-colorizer.lua", config = require("user.plugin.config.colorizer") }) -- add color bg to certain keyword
 
 	----------------------
 	-- Code development --
@@ -145,7 +156,11 @@ return packer.startup(function(use)
 	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", as = "lsp_lines" })
 	use({ "simrat39/symbols-outline.nvim", config = require("user.plugin.config.symbol-outline") })
 	use({ "SmiteshP/nvim-navic", config = require("user.plugin.config.navic") })
-	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", config = require("user.plugin.config.trouble") })
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = require("user.plugin.config.trouble"),
+	})
 
 	-- DEBUGGING
 	-- nvim-dap
