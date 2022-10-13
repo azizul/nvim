@@ -26,6 +26,8 @@ M.winbar_filetype_exclude = {
 	"dapui_console",
 	"lab",
 	"Markdown",
+    "Cmdline",
+    "Nui"
 	--[[ "", ]]
 }
 

@@ -73,7 +73,7 @@ return packer.startup(function(use)
     --FIXME need to manually call require "noice".setup() to start it
 	use({
 		"folke/noice.nvim",
-		event = "VimEnter",
+		--[[ event = "VimEnter", ]]
 		config = require("user.plugin.config.noice"),
 		requires = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
