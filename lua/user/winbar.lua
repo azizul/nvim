@@ -1,5 +1,5 @@
 local M = {}
-local Color = require "user.utility.constant".Color
+local Color = require("user.utility.constant").Color
 
 M.winbar_filetype_exclude = {
 	"help",
@@ -26,7 +26,7 @@ M.winbar_filetype_exclude = {
 	"dapui_console",
 	"lab",
 	"Markdown",
-	"",
+	--[[ "", ]]
 }
 
 M.get_filename = function()
@@ -52,6 +52,15 @@ M.get_filename = function()
 		vim.api.nvim_set_hl(0, "Winbar", { fg = Color.blue_moonfly })
 
 		return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#Winbar#" .. filename .. "%*"
+	end
+end
+
+M.show_macro_recording = function()
+	local recording_register = vim.fn.reg_recording()
+	if recording_register == "" then
+		return ""
+	else
+		return "Recording @" .. recording_register
 	end
 end
 
@@ -115,6 +124,16 @@ M.get_winbar = function()
 	if num_tabs > 1 and not f.isempty(value) then
 		local tabpage_number = tostring(vim.api.nvim_tabpage_get_number(0))
 		value = value .. "%=" .. tabpage_number .. "/" .. tostring(num_tabs)
+	end
+
+	local macro_recording = M.show_macro_recording()
+
+	if not f.isempty(macro_recording) then
+        if not f.isempty(value) then
+		    value = "[" .. macro_recording .. "] " .. value
+        else
+            value = "[" .. macro_recording .. "]"
+        end
 	end
 
 	local status_ok, _ = pcall(vim.api.nvim_set_option_value, "winbar", value, { scope = "local" })

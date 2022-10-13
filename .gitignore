@@ -39,6 +39,9 @@ luac.out
 *.x86_64
 *.hex
 
+# Project dynamic data
+*.vim-bookmarks
+
 
 plugin/packer_compiled.lua
 java-debug/
