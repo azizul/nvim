@@ -94,6 +94,8 @@ return packer.startup(function(use)
 	use({ "lunarvim/darkplus.nvim" }) -- not active
 
 	-- Note taking
+    -- markdown previewer
+    use {"ellisonleao/glow.nvim"}
 	use({ "nvim-neorg/neorg", config = require("user.plugin.config.neorg"), requires = "nvim-lua/plenary.nvim" })
 
 	-- TODO still need to figure out how to search
