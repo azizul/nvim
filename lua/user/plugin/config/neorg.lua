@@ -11,6 +11,7 @@ neorg.setup({
 				workspaces = {
 					work = "~/notes/work",
 					home = "~/notes/home",
+                    example_gtd = "/mnt/d/git-repo/github/neorg-gtd-example_workspaces"
 				},
 			},
 		},
@@ -21,7 +22,7 @@ neorg.setup({
 		},
 		["core.gtd.base"] = {
 			config = {
-				workspace = "home",
+				workspace = "example_gtd",
 			},
 		},
 		["core.norg.completion"] = {

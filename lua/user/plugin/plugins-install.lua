@@ -70,7 +70,19 @@ return packer.startup(function(use)
 	use({ "folke/which-key.nvim", config = require("user.plugin.config.whichkey") })
 	use({ "rcarriga/nvim-notify", config = require("user.plugin.config.notify") })
 	use({ "folke/zen-mode.nvim", config = require("user.plugin.config.zenmode") })
-
+	-- noice
+	use({
+		"folke/noice.nvim",
+		config = require("user.plugin.config.noice"),
+		requires = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+	})
 	-- general utility
 	use({ "moll/vim-bbye" }) -- improve BDelete
 	use({ "MattesGroeger/vim-bookmarks" })
@@ -94,9 +106,9 @@ return packer.startup(function(use)
 	use({ "lunarvim/darkplus.nvim" }) -- not active
 
 	-- Note taking
-    -- markdown previewer
-    use {"ellisonleao/glow.nvim"}
-	use({ "nvim-neorg/neorg", config = require("user.plugin.config.neorg"), requires = "nvim-lua/plenary.nvim" })
+	-- markdown previewer
+	use({ "ellisonleao/glow.nvim" })
+	--[[ use({ "nvim-neorg/neorg", config = require("user.plugin.config.neorg"), requires = "nvim-lua/plenary.nvim" }) ]]
 
 	-- TODO still need to figure out how to search
 	-- FIXME break with 0.8
